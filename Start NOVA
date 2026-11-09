@@ -1,0 +1,6 @@
+Once all nine files are created:
+Open the NOVA_AI folder in VS Code.
+Install the requirements.
+Configure your private .env file.
+Run python app.py.
+Visit http://127.0.0.1:5000.
