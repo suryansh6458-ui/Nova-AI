@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07111f">
+
+    <title>NOVA AI — Personal Assistant</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<div class="shell">
+
+    <header>
+        <div class="brand">
+            <div class="mark">N</div>
+
+            <div>
+                <b>NOVA</b>
+                <small>PERSONAL AI</small>
+            </div>
+        </div>
+
+        <div class="status">
+            <i></i>
+            <span id="status">CONNECTING</span>
+        </div>
+
+        <button id="settings" class="gear">⚙</button>
+    </header>
+
+    <div class="layout">
+
+        <aside class="panel sidebar">
+
+            <div class="label">WORKSPACE</div>
+
+            <button class="nav active" data-view="assistant">
+                ◉ &nbsp; Assistant
+            </button>
+
+            <button class="nav" data-view="notes">
+                ▤ &nbsp; My Notes
+            </button>
+
+            <button class="nav" data-view="tools">
+                ⌘ &nbsp; Quick Tools
+            </button>
+
+            <div class="rule"></div>
+
+            <div class="label">SYSTEM STATUS</div>
+
+            <div class="stat">
+                <small>AI ENGINE</small>
+                <b id="engine">Checking…</b>
+            </div>
+
+            <div class="stat">
+                <small>VOICE</small>
+                <b id="voice">Standby</b>
+            </div>
+
+            <div class="tip">
+                You stay in control of every action NOVA takes.
+            </div>
+
+        </aside>
+
+        <main>
+
+            <!-- ASSISTANT PAGE -->
+
+            <section class="view active" id="assistant">
+
+                <div class="intro">
+                    <small>YOUR PERSONAL INTELLIGENCE</small>
+
+                    <h1>
+                        Good day.
+                        <em>What can I do for you?</em>
+                    </h1>
+
+                    <p>
+                        Talk to NOVA or type a command below.
+                    </p>
+                </div>
+
+                <div class="panel stage">
+
+                    <div class="orb-wrap">
+                        <div class="ring r1"></div>
+                        <div class="ring r2"></div>
+                        <div class="orb" id="orb">N</div>
+                    </div>
+
+                    <b id="voicePrompt">
+                        NOVA IS STANDING BY
+                    </b>
+
+                    <p id="voiceSub">
+                        Press the microphone and speak naturally
+                    </p>
+
+                    <div class="controls">
+                        <button id="mic">🎙</button>
+                        <button id="stop">■</button>
+                    </div>
+
+                    <div class="lang">
+                        <label for="language">VOICE LANGUAGE</label>
+
+                        <select id="language">
+                            <option value="en-IN">
+                                English (India)
+                            </option>
+
+                            <option value="hi-IN">
+                                Hindi
+                            </option>
+
+                            <option value="en-US">
+                                English (US)
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="panel chat">
+
+                    <div class="chat-head">
+                        CONVERSATION
+
+                        <button id="clear">
+                            Clear chat
+                        </button>
+                    </div>
+
+                    <div id="messages" class="messages">
+
+                        <div class="msg nova">
+                            <div class="avatar">N</div>
+
+                            <div class="bubble">
+                                Hello! I'm NOVA.
+
+                                Ask me a question or try:
+
+                                "Calculate 24 times 8"
+
+                                or
+
+                                "Create a note: finish homework".
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <form id="chatForm">
+
+                        <input
+                            id="prompt"
+                            placeholder="Message NOVA or type a command…"
+                            maxlength="6000"
+                        >
+
+                        <button type="submit">
+                            SEND ↗
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <!-- NOTES PAGE -->
+
+            <section class="view" id="notes">
+
+                <div class="intro">
+                    <small>PERSONAL WORKSPACE</small>
+
+                    <h1>My <em>Notes</em></h1>
+
+                    <p>
+                        Your notes are stored on the NOVA server.
+                    </p>
+                </div>
+
+                <div class="panel noteform">
+
+                    <textarea
+                        id="noteText"
+                        maxlength="2000"
+                        placeholder="Write a note…"
+                    ></textarea>
+
+                    <button id="saveNote">
+                        ＋ Save note
+                    </button>
+
+                </div>
+
+                <div id="noteList" class="cards"></div>
+
+            </section>
+
+            <!-- QUICK TOOLS PAGE -->
+
+            <section class="view" id="tools">
+
+                <div class="intro">
+                    <small>COMMAND DECK</small>
+
+                    <h1>Quick <em>Tools</em></h1>
+
+                    <p>
+                        Useful actions available in this version.
+                    </p>
+                </div>
+
+                <div class="cards">
+
+                    <article class="panel tool">
+
+                        <div class="ico">∑</div>
+
+                        <h3>Calculator</h3>
+
+                        <p>
+                            Basic arithmetic with a restricted safe parser.
+                        </p>
+
+                        <div class="inline">
+
+                            <input
+                                id="expr"
+                                placeholder="(45 + 12) * 3"
+                            >
+
+                            <button id="calc">
+                                Calculate
+                            </button>
+
+                        </div>
+
+                        <div id="calcResult" class="result"></div>
+
+                    </article>
+
+                    <article class="panel tool">
+
+                        <div class="ico">◷</div>
+
+                        <h3>Clock</h3>
+
+                        <p>
+                            Current time from your device.
+                        </p>
+
+                        <div id="clock" class="clock">
+                            --:--:--
+                        </div>
+
+                    </article>
+
+                    <article class="panel tool">
+
+                        <div class="ico">↗</div>
+
+                        <h3>Website launcher</h3>
+
+                        <p>
+                            Open approved websites in a new tab.
+                        </p>
+
+                        <div class="sites">
+
+                            <button data-site="google">
+                                Google
+                            </button>
+
+                            <button data-site="youtube">
+                                YouTube
+                            </button>
+
+                            <button data-site="wikipedia">
+                                Wikipedia
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <article class="panel tool">
+
+                        <div class="ico">◉</div>
+
+                        <h3>Voice test</h3>
+
+                        <p>
+                            Test speech output on this browser.
+                        </p>
+
+                        <button id="voiceTest">
+                            Test voice output
+                        </button>
+
+                        <div id="voiceResult" class="result"></div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <footer>
+        NOVA AI • PERSONAL ASSISTANT PROTOTYPE • YOU CONTROL THE ACTIONS
+    </footer>
+
+</div>
+
+<!-- SETTINGS WINDOW -->
+
+<dialog id="settingsDialog">
+
+    <button id="closeSettings" class="close">×</button>
+
+    <small>PREFERENCES</small>
+
+    <h2>NOVA Settings</h2>
+
+    <p>
+        The access PIN is configured in the private server-side .env file.
+    </p>
+
+    <label class="check">
+        <input id="speakToggle" type="checkbox" checked>
+        Speak AI responses aloud
+    </label>
+
+    <label class="check">
+        <input id="historyToggle" type="checkbox" checked>
+        Keep conversation in this browser
+    </label>
+
+    <button id="saveSettings">
+        Save preferences
+    </button>
+
+</dialog>
+
+<script src="/app.js"></script>
+
+</body>
+</html>
